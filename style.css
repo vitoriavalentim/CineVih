@@ -1,128 +1,167 @@
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1f1f1f;
+    --red-brand: #e50914;
+    --text-light: #ffffff;
+    --text-secondary: #cccccc;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    background-color: #121212;
-    color: white;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 header {
-    background-color: #e50914;
-    padding: 20px;
+    background-color: var(--red-brand);
+    padding: 20px 0;
     text-align: center;
 }
 
-h1 {
-    margin: 0;
+h1, h2, h3 {
+    font-weight: bold;
 }
 
-main {
-    padding: 20px;
-}
-
-/* Filme em destaque estilo banner */
-.filme-destaque-banner {
-    position: relative;
-    margin-bottom: 40px;
-}
-
-.filme-destaque-banner img {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
+/* Filme em destaque */
+.filme-destaque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: var(--bg-card);
+    padding: 30px;
     border-radius: 10px;
+    margin: 40px auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.filme-destaque:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.filme-destaque .img-container {
+    width: 100%;
+    max-width: 300px; /* Reduzindo a largura da imagem */
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.filme-destaque img {
+    width: 100%;
+    height: auto;
     display: block;
 }
 
-.filme-destaque-banner .overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: left;
-    max-width: 50%;
+.info-destaque {
+    text-align: center;
 }
 
-.filme-destaque-banner h2 {
-    font-size: 2.5em;
-    margin-bottom: 15px;
+.info-destaque h2 {
+    margin: 0 0 10px 0;
+    font-size: 2em;
 }
 
-.filme-destaque-banner p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+.info-destaque p {
+    color: var(--text-secondary);
+    font-size: 1em;
 }
 
-.filme-destaque-banner .btn-assistir {
-    background-color: #e50914;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.1em;
-    text-decoration: none;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.filme-destaque-banner:hover .btn-assistir {
-    opacity: 1;
+@media (min-width: 768px) {
+    .filme-destaque {
+        flex-direction: row;
+        text-align: left;
+    }
+    .info-destaque {
+        text-align: left;
+    }
 }
 
 /* Outros filmes */
+.categoria {
+    margin-bottom: 40px;
+}
+
 .categoria h2 {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .filmes-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 15px;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
 }
 
 .filme-card {
-    background-color: #1f1f1f;
+    background-color: var(--bg-card);
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
-    padding-bottom: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
 .filme-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+}
+
+.filme-card .img-container {
+    position: relative;
 }
 
 .filme-card img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 10px 10px 0 0;
 }
 
-.img-container {
-    position: relative;
+.filme-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.1em;
+    padding: 0 10px;
 }
 
+.filme-card p {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    padding: 0 10px 10px;
+}
+
+/* Botão Assistir */
 .btn-assistir {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #e50914;
+    background-color: var(--red-brand);
     border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    color: var(--text-light);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: bold;
     cursor: pointer;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
 
 .img-container:hover .btn-assistir {
     opacity: 1;
 }
 
-.filme-card h3
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+}
